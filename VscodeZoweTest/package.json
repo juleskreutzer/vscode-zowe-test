@@ -1,0 +1,72 @@
+{
+  "name": "VscodeZoweTest",
+  "displayName": "VscodeZoweTest",
+  "description": "Test extension for VSCode with Zowe",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.69.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "extensionDependencies": [
+    "zowe.vscode-extension-for-zowe"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "VscodeZoweTest.helloWorld",
+        "title": "Hello World"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "zowetest",
+          "title": "My test title",
+          "icon": "resources/zowe.svg"
+        }
+      ]
+    },
+    "views": {
+      "zowetest": [
+        {
+          "id": "zowetest.testa.explorer",
+          "name": "Node Dependencies"
+        },
+        {
+          "id": "zowetest.testb.explorer",
+          "name": "File system explorer"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.2.0",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.69.0",
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.31.0",
+    "@vscode/test-electron": "^2.1.5",
+    "eslint": "^8.20.0",
+    "glob": "^8.0.3",
+    "mocha": "^10.0.0",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "@zowe/zowe-explorer-api": "^2.2.0"
+  }
+}
